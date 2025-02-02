@@ -1,0 +1,2 @@
+# termux-archlinux
+用于在termux上使用proot容器安装archlinux的流程
