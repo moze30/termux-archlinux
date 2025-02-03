@@ -36,6 +36,11 @@
     Server = http://mirrors.aliyun.com/archlinuxarm/$arch/$repo
 
 Ctrl+o Ctrl+x（记得按回车键）
+# 更新升级系统所有包
+
+    pacman -Syu
+
+
 # 创建新用户
 
     pacman -S sudo
