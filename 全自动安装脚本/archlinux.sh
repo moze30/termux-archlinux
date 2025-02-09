@@ -12,7 +12,6 @@ RESET='\033[0m'
 validate_username() {
   if [[ ! "$1" =~ ^[a-z_][a-z0-9_-]{0,31}$ ]]; then
     echo -e "${RED}错误：用户名不符合Linux命名规则！${RESET}"
-    echo -e "要求："
     echo "- 只能包含小写字母、数字、连字符(-)和下划线(_)"
     echo "- 首字符必须是小写字母或下划线"
     echo "- 长度1-32字符"
@@ -104,6 +103,9 @@ echo "$ARCH_USER:$ARCH_PASS" | chpasswd
 # 配置sudo权限
 echo -e "${YELLOW}配置sudo权限...${RESET}"
 sed -i '/^# %wheel ALL=(ALL:ALL) ALL$/s/^# //' /etc/sudoers
+
+# 动态添加用户到sudoers
+echo "$ARCH_USER ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 # 安装桌面环境
 echo -e "${YELLOW}安装Xfce4...${RESET}"
